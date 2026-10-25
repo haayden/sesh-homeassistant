@@ -1,0 +1,57 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Sign in to Sesh",
+        "description": "Use the name you sign in to the Sesh app with. Your PIN is in the app's Menu.",
+        "data": { "name": "Name", "pin": "PIN", "url": "Sesh API" },
+        "data_description": { "url": "Leave as it is." }
+      },
+      "reauth_confirm": {
+        "title": "Sign in to Sesh again",
+        "description": "Sesh signed {name} out. Enter the PIN from the app's Menu.",
+        "data": { "pin": "PIN" }
+      }
+    },
+    "error": {
+      "wrong_pin": "Wrong PIN, or too many tries (wait 15 minutes).",
+      "no_account": "No Sesh account has that name. Check the spelling in the app.",
+      "cannot_connect": "Can't reach Sesh.",
+      "unknown": "Something went wrong."
+    },
+    "abort": {
+      "already_configured": "That Sesh account is already set up.",
+      "reauth_successful": "Signed in again."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "dabs_today": { "name": "Dabs today" },
+      "dabs_today_peakpro": { "name": "Peak Pro dabs today" },
+      "dabs_today_switch2": { "name": "Switch 2 dabs today" },
+      "lifetime_dabs": { "name": "Lifetime dabs" },
+      "leaderboard": { "name": "Leaderboard place" },
+      "last_dab": { "name": "Last dab" },
+      "rig_dabs": { "name": "Dabs" }
+    },
+    "event": {
+      "dab": {
+        "name": "Dab",
+        "state_attributes": {
+          "event_type": { "state": { "my_dab": "You started a dab", "friend_dab": "A friend started a dab" } }
+        }
+      },
+      "cheers": {
+        "name": "Cheers",
+        "state_attributes": { "event_type": { "state": { "cheers": "Cheers" } } }
+      }
+    }
+  },
+  "services": {
+    "send_cheers": {
+      "name": "Send cheers",
+      "description": "Send a friend a cheers, like the button in the app.",
+      "fields": { "to": { "name": "To", "description": "Their Sesh name." } }
+    }
+  }
+}
