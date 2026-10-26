@@ -14,7 +14,7 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.util import dt as dt_util
 
 from . import SeshConfigEntry
-from .const import DOMAIN, KINDS
+from .const import DOMAIN, KINDS, SITE
 from .coordinator import SeshCoordinator, SeshData
 
 
@@ -127,7 +127,7 @@ def account_device(coordinator: SeshCoordinator) -> DeviceInfo:
         name=entry.title,
         manufacturer="Sesh",
         entry_type=DeviceEntryType.SERVICE,
-        configuration_url="https://sesh-rigs.vercel.app",
+        configuration_url=SITE,
     )
 
 

@@ -3,6 +3,8 @@ from datetime import timedelta
 
 DOMAIN = "sesh"
 DEFAULT_URL = "https://sesh-api.gyle.online"
+SITE = "https://sesh-rigs.vercel.app"
+PANEL = "sesh"
 
 CONF_PIN = "pin"
 CONF_TOKEN = "token"

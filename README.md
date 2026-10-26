@@ -80,6 +80,7 @@ tap_action:
 
 ## The app itself in the sidebar
 
-Settings → Dashboards → **Add dashboard** → **Webpage** → URL `https://sesh-rigs.vercel.app`.
-You get Metrics, the leaderboard and your rips inside Home Assistant. Connecting a rig still has
-to happen in the Sesh app on your phone, because Home Assistant can't use Bluetooth inside a page.
+Once Sesh is set up, **Sesh** shows up in Home Assistant's sidebar with the whole app in it:
+Metrics, the leaderboard, your rips and the rest. Sign in there once with the same name and PIN.
+Connecting a rig still happens in the Sesh app on your phone, because Home Assistant can't use
+Bluetooth inside a page.
