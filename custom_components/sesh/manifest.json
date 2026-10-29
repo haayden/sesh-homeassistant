@@ -1,6 +1,7 @@
 {
   "domain": "sesh",
   "name": "Sesh",
+  "after_dependencies": ["bluetooth"],
   "codeowners": ["@haayden"],
   "config_flow": true,
   "dependencies": ["frontend", "http", "panel_custom"],
@@ -9,5 +10,5 @@
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/haayden/sesh-homeassistant/issues",
   "requirements": [],
-  "version": "0.2.0"
+  "version": "0.3.0"
 }

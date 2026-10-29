@@ -82,5 +82,15 @@ tap_action:
 
 Once Sesh is set up, **Sesh** shows up in Home Assistant's sidebar with the whole app in it:
 Metrics, the leaderboard, your rips and the rest. Sign in there once with the same name and PIN.
-Connecting a rig still happens in the Sesh app on your phone, because Home Assistant can't use
-Bluetooth inside a page.
+
+Rigs connect through Home Assistant's own Bluetooth: its adapter, or an
+[ESPHome Bluetooth proxy](https://esphome.io/components/bluetooth_proxy.html). Tap **Add a rig**
+and pick yours from the list. The rig has to be near the adapter or a proxy, not near the
+device you're browsing on, so it works from any browser and from the Home Assistant app.
+
+- ESPHome proxies need `active: true` to connect to a rig (listening alone isn't enough).
+- A rig takes one connection at a time. Close the Puffco and Dr. Dabber apps first, and
+  Home Assistant lets the rig go about 20 seconds after you close the Sesh panel, so your
+  phone can have it again.
+- Without Bluetooth in Home Assistant, the panel uses the browser's own Bluetooth instead
+  (Chrome and Edge on a computer).

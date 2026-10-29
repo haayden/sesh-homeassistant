@@ -1,6 +1,7 @@
 """Sesh: dabs, rigs and cheers from the Sesh rig app, as Home Assistant entities and events."""
 from __future__ import annotations
 
+import logging
 from pathlib import Path
 
 import voluptuous as vol
@@ -18,8 +19,14 @@ from .api import SeshApi, SeshError
 from .const import CONF_TOKEN, DOMAIN, PANEL, SITE
 from .coordinator import SeshCoordinator
 
+try:
+    from . import ble
+except ImportError as err:  # no Bluetooth libraries in this install: the panel uses the browser's Bluetooth
+    logging.getLogger(__name__).info("Sesh panel without Home Assistant's Bluetooth: %s", err)
+    ble = None
+
 PLATFORMS = [Platform.SENSOR, Platform.EVENT]
-VERSION = "0.2.0"
+VERSION = "0.3.0"
 CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
 
 type SeshConfigEntry = ConfigEntry[SeshCoordinator]
@@ -36,6 +43,8 @@ async def async_setup(hass: HomeAssistant, config: dict) -> bool:
             raise HomeAssistantError(f"Sesh: {e}") from e
 
     hass.services.async_register(DOMAIN, "send_cheers", send_cheers, schema=vol.Schema({vol.Required("to"): cv.string}))
+    if ble:
+        ble.async_setup(hass)
     await hass.http.async_register_static_paths(
         [StaticPathConfig("/sesh_panel", str(Path(__file__).parent / "frontend"), cache_headers=False)]
     )

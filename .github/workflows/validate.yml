@@ -18,3 +18,17 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - uses: home-assistant/actions/hassfest@master
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+      - run: pip install pytest-homeassistant-custom-component
+      # Home Assistant's Bluetooth libraries, at the versions it pins itself.
+      - run: >-
+          pip install $(python -c "import json, pathlib, homeassistant.components as c;
+          p = pathlib.Path(c.__file__).parent;
+          print(' '.join(r for n in ('bluetooth', 'usb', 'bluetooth_adapters') for r in json.loads((p / n / 'manifest.json').read_text()).get('requirements', [])))")
+      - run: pytest -q
